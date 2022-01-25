@@ -1,0 +1,58 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital@1&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital@1&family=The+Nautigal:wght@700&display=swap');
+
+*{
+  padding: 0;
+  margin: 0;
+  font-size: 24px;
+  font-family: Cormorant Garamond;
+  background-image: url(https://i.pinimg.com/originals/e3/4c/a1/e34ca164d20ffaa28e7829c9641991c5.jpg);
+
+
+}
+.header-sec{
+ margin-bottom: 5px;
+}
+
+
+header{
+  height: 60px;
+  background: rgb(68, 67, 67);
+  
+}
+ 
+
+header .header-nav{
+  float: right; 
+  margin-top: 15px; 
+  
+}
+header .header-nav a {
+ color: white;
+ text-decoration: none;
+ font-size: 19px;
+ padding: 10px 20px;
+ background-color: rgb(68, 67, 67);
+
+}
+.background{
+ margin-top: 10px;
+ 
+
+}
+
+footer {
+   
+    text-align: center;
+    /* display: flex; */
+    font-size: 24px;
+    align-items: center;
+    justify-content: center;
+    background-color: gray;
+    color: white;
+    position: fixed;
+    width: 100%;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+  }
