@@ -3,7 +3,7 @@
 ### Editing of today is:
 ---
 
-**1. We will add a form with the fields: **  
+**1. We will add a form with the fields:**  
 
 - Full name
 - Department as a select input  
