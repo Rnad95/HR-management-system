@@ -3,17 +3,29 @@
 ### Editing of today is:
 ---
 
-**1. We will add a form with the fields: **
+**1. We will add a form with the fields: **  
 
 - Full name
-- Department as a select input
-- 
-> 1. Administration
-> 2.Marketing
-> 3.Development
-> 4.Finance
+- Department as a select input  
 
-- Level as a select input
+---
+
+> 1. Administration  
+> 2.Marketing  
+> 3.Development  
+> 4.Finance  
+
+---
+
+- Level as a select input  
+
+---
+> Senior  
+> Mid-Senior
+> Jinuor 
+
+---
+
 - Image url
 - Submit button
 
