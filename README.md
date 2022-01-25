@@ -12,10 +12,10 @@
 
 ---
 
->  1.Administration  
->  2.Marketing  
->  3.Development  
->  4.Finance  
+>  1. Administration  
+>  2. Marketing  
+>  3. Development  
+>  4. Finance  
 
 ---
 
