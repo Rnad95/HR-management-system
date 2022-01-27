@@ -1,4 +1,4 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital@1&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital@1&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital@1&family=The+Nautigal:wght@700&display=swap');
 
 *{
@@ -6,12 +6,16 @@
   margin: 0;
   font-size: 24px;
   font-family: Cormorant Garamond;
-  background-image: url(https://i.pinimg.com/originals/e3/4c/a1/e34ca164d20ffaa28e7829c9641991c5.jpg);
+  color:  white;
+  position: flex;
+
 
 
 }
 .header-sec{
  margin-bottom: 5px;
+
+
 }
 
 
@@ -19,12 +23,23 @@ header{
   height: 60px;
   background: rgb(68, 67, 67);
   
+  
 }
  
+.dep{
+background-color: rgba(36, 0, 0, 0.767);
+
+}
+
+.lev{
+  background-color: rgba(36, 0, 0, 0.767);
+
+}
 
 header .header-nav{
   float: right; 
   margin-top: 15px; 
+
   
 }
 header .header-nav a {
@@ -34,25 +49,122 @@ header .header-nav a {
  padding: 10px 20px;
  background-color: rgb(68, 67, 67);
 
+
 }
+
 .background{
  margin-top: 10px;
- 
 
+
+}
+
+.empInfo{
+
+    text-align: center;
+    position: relative;
+    left: 20%;
+    width: 65%;
+    background-color: rgba(0, 0, 0, 0.664);
+}
+
+.sec{
+  display: inline-block;
+}
+
+.submit{
+
+  color: black;
+  margin-left: 5%;
+  margin-bottom: 3%;
+}
+
+body{
+
+  background-image: url(https://wallpapercave.com/wp/wp2733191.jpg);
+  /* background-image: url(https://i.pinimg.com/originals/e3/4c/a1/e34ca164d20ffaa28e7829c9641991c5.jpg); */
+
+
+}
+
+table {
+  border: 5px solid black;
+  background-color:rgba(0, 0, 0, 0.842) ;
+  text-align: center;
+  position: relative;
+  left: 20%;
+  width: 65%;
+  
+}
+
+.title{
+  border: 5px solid black;
 }
 
 footer {
-   
+  text-align: center;
+  font-size: 24px;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(24, 23, 23);
+  color: white;
+  width: 100%;
+  height: 15%;
+  bottom: 0%;
+} 
+
+  h3{
+    background-color:rgba(0, 0, 0, 0.664) ;
     text-align: center;
-    /* display: flex; */
-    font-size: 24px;
-    align-items: center;
-    justify-content: center;
-    background-color: gray;
-    color: white;
-    position: fixed;
-    width: 100%;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
+  }
+  h3::first-letter{
+    font-size:70px;
+    
+    font-family:The Nautigal;
+ 
+  
+  }
+  .empCard{
+    background-color: #630000;
+    width: 50%;
+    text-align: center;
+    position: relative;
+    left: 25%;
+    margin-bottom: 10px;;
+    
+    
+
+  }
+form{
+  display: inline-block;
+}
+  
+
+  .tex{
+
+    text-align: center;
+  }
+  #copyR{
+font-size: 15px;
+  }
+
+  #admin{
+    background-color: rgba(36, 0, 0, 0.767);
+    width: 25%;
+
+  text-align: center;
+  
+    
+  }
+
+  .sec{
+    background-color: rgba(36, 0, 0, 0.767);
+    width: 25%;
+
+  text-align: center;
+  
+  }
+
+  .lab{
+    background-color:  rgb(24, 23, 23);
+    text-align: right;
   }
