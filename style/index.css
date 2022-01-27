@@ -141,6 +141,7 @@ font-size: 15px;
   }
 
   .lab{
-    background-color:  rgb(24, 23, 23);
-    text-align: right;
+    background-color:  rgba(24, 23, 23, 0.931);
+ position: absolute;
+    width: 100%;
   }
