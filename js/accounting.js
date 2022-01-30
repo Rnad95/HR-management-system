@@ -1,98 +1,112 @@
 'use strict';
 
 //you calculated the no. of employee in app.js file in handle submit
-// show the table in the page instead of "false word"
-
-
+// show the table in the page instead of "false word
 
 let form = document.getElementById('form');
 let div = document.getElementById('addedNames');
-
+const thead = document.getElementById('thead');
+const tfoot = document.getElementById('tfoot');
+let tr = document.getElementById('tr1')
 let emp = [];
 
 
 checkLocalAndPush();
-
 function handleSubmit(event) {
 
     event.preventDefault();
-    render(readFromLocalS());
+    let arr = render(readFromLocalS());
 
 }
+
 
 function toJSON() {
     let jsonArray = JSON.stringify(users);
     return jsonArray;
 }
 
+
 function saveToLocalS(jsonArray) {
-    localStorage.setItem('allEmps', jsonArray)
+    localStorage.setItem('admin', jsonArray)
 
 }
 
+//convert json file to a normal array
 function readFromLocalS() {
-    let jsonArr = localStorage.getItem('allEmps');
+    let jsonArr = localStorage.getItem('admin');
     let arr = JSON.parse(jsonArr);
     if (arr !== null) {
         return arr;
     } else {
         return [];
     }
+
+    render(arr);
+    // , totalSalaryOfEachDepartment(arr), avgSalary(arr)
 }
 
 function render(arr) {
     div.innerHTML = '';
+    thead.innerHTML = '';
+    tfoot.innerHTML = '';
+    tr.innerHTML = '';
 
-    let p0 = document.createElement('p');
-    div.appendChild(p0);
+    let tbody = document.createElement('tbody');
+
+    let tbody4 = document.createElement('tr');
+    thead.appendChild(tbody4);
+    tbody4.textContent = "Department";
+
+    let tbody5 = document.createElement('tr');
+    thead.appendChild(tbody5);
+    tbody5.textContent = "# of Employee";
+    let tbody6 = document.createElement('tr');
+    thead.appendChild(tbody6);
+    tbody6.textContent = "Total Salary";
+    let tbody7 = document.createElement('tr');
+    thead.appendChild(tbody7);
+    tbody7.textContent = "Average Salary"
 
 
-    let p = document.getElementById('addedNames');
-    let arr1 = readFromLocalS();
-    p.textContent = arr1.includes("admCount");
+    let tbody0 = document.createElement('tbody');
+    div.appendChild(tbody);
+    tbody.textContent = "Adminstration " + arr[arr.length - 1].Adm;
 
-    let sum = summationOfEachDepartment(readFromLocalS());
-    let avg = avgSalary(readFromLocalS, sum);
-    let totSalary = sum[0];
+    let tbody1 = document.createElement('tbody');
+    div.appendChild(tbody1);
+    tbody1.textContent = `Marketing  ${arr[arr.length - 1].Markt}`;
 
-}
+    let tbody2 = document.createElement('tbody');
+    div.appendChild(tbody2);
+    tbody2.textContent = `Development${arr[arr.length - 1].Dev}`;
+
+    let tbody3 = document.createElement('tbody');
+    div.appendChild(tbody3);
+    tbody3.textContent = ` Finance ${arr[arr.length - 1].Fina}`;
 
 
-function avgSalary(empFormLocalStrg, sum) {
-    let arr = [sum[0]];
+    for (let i = 0; i < arr.length - 1; i++) { //subtraction because the last item is total
 
-    for (let i = 1; i < sum.length; i++) {
-        arr.push(sum[0] / sum[i]);
+        let tbody = document.createElement('tfoot');
+        tfoot.appendChild(tbody);
+        tbody.textContent = arr[i].totalSal[i];
 
     }
-    return arr;
-}
 
+    let tfoot0 = document.createElement('tfoot');
+    tfoot.appendChild(tfoot0);
+    tfoot0.textContent = `Total ${arr.length}`;
 
-function summationOfEachDepartment(empFormLocalStrg) {
-    let totalSalary = 0;
+    for (let i = 0; i < arr.length; i++) {
+        let tfoot1 = document.createElement('tfoot');
+        tfoot.appendChild(tfoot1);
+        tfoot1.textContent = arr[i].totalSal[i];
 
-    for (let x = 0; x < empFormLocalStrg.length; x++) {
-
-        if (department === "Administration") {
-            adm = adm + empFormLocalStrg[x].Salary;
-
-        }
-        else if (department === "Marketing") {
-            markt = markt + empFormLocalStrg[x].Salary;
-
-        } else if (department === "Development") {
-            dev = dev + empFormLocalStrg[x].Salary;
-
-        } else {
-            fina = fina + empFormLocalStrg[x].Salary;
-        }
     }
 
-    totalSalary = fina + dev + markt + adm;
 
-    return [totalSalary, adm, markt, dev, fina];
 }
+
 
 function checkLocalAndPush() {
     if (emp.length == 0) {
@@ -103,9 +117,8 @@ function checkLocalAndPush() {
     }
 }
 
-render(readFromLocalS());
 
-
+//render(readFromLocalS());
 
 
 form.addEventListener('submit', handleSubmit)

@@ -81,7 +81,9 @@ body{
 
   background-image: url(https://wallpapercave.com/wp/wp2733191.jpg);
   /* background-image: url(https://i.pinimg.com/originals/e3/4c/a1/e34ca164d20ffaa28e7829c9641991c5.jpg); */
-
+  background-repeat:repeat;
+		background-attachment:fixed;
+		overflow:scroll;
 }
 
 footer {
@@ -106,6 +108,7 @@ footer {
     position: relative;
     left: 25%;
     margin-bottom: 10px;;
+    height: 50%;
     
     
 
@@ -123,20 +126,22 @@ form{
 font-size: 15px;
   }
 
-  #admin{
-    background-color: rgba(36, 0, 0, 0.767);
-    width: 25%;
+ 
 
-  text-align: center;
-  
-    
+  div{
+    background-color: rgba(36, 0, 0, 0.767);
+    flex-wrap: nowrap;
+    margin: 20px;
+    padding: 35px;;
+
   }
-
   .sec{
-    background-color: rgba(36, 0, 0, 0.767);
-    width: 25%;
+    /* background-color: rgba(36, 0, 0, 0.767);
+width: 100%;*/
+  text-align: center; 
+  position: relative;
+  display: flex;
 
-  text-align: center;
   
   }
 
