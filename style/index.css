@@ -81,7 +81,9 @@ body{
 
   background-image: url(https://wallpapercave.com/wp/wp2733191.jpg);
   /* background-image: url(https://i.pinimg.com/originals/e3/4c/a1/e34ca164d20ffaa28e7829c9641991c5.jpg); */
-
+  background-repeat:repeat;
+		background-attachment:fixed;
+		overflow:scroll;
 }
 
 footer {
@@ -95,6 +97,7 @@ footer {
     height: 15%;
     bottom: 0;
   } 
+  
   h3::first-letter{
     font-size:50px;
     font-family:The Nautigal; 
@@ -106,6 +109,7 @@ footer {
     position: relative;
     left: 25%;
     margin-bottom: 10px;;
+    height: 50%;
     
     
 
@@ -123,20 +127,24 @@ form{
 font-size: 15px;
   }
 
-  #admin{
-    background-color: rgba(36, 0, 0, 0.767);
-    width: 25%;
-
-  text-align: center;
   
-    
-  }
+ 
 
-  .sec{
+  div{
     background-color: rgba(36, 0, 0, 0.767);
-    width: 25%;
+    flex-wrap: nowrap;
+    margin: 20px;
+    padding: 35px;
 
-  text-align: center;
+
+  }
+  .sec{
+    /* background-color: rgba(36, 0, 0, 0.767); */
+width: 100%;
+  text-align: center; 
+  position: relative;
+  display: flex;
+  
   
   }
 
@@ -144,4 +152,5 @@ font-size: 15px;
     background-color:  rgba(24, 23, 23, 0.931);
  position: absolute;
     width: 100%;
+    display: flex;
   }

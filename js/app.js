@@ -8,23 +8,22 @@ let allEmployees = [];
 checkLocalAndPush();
 
 var count = 0;
-let adm = 0;
-let markt = 0;
-let dev = 0;
-let fina = 0;
+let depCount = [0, 0, 0, 0];
+let totalSal = [0, 0, 0, 0]
 
-function Employee(fullName, department, level) {
+function Employee(fullName, department, level, imageURL) {
     this.employeeID = 0;
     this.fullName = fullName;
     this.department = department;
     this.level = level;
-    this.imageURL = "./assets/maleImg.png";
-    // this.Salary = this.calculateSalary(level);
+    this.imageURL = imageURL || "../assets/maleImg.png";
     this.Salary = 0;
-
+    this.depCount = [];
+    this.Count = 0;
+    this.totalSal = [];
+    this.avg = [];
 
 }
-
 
 
 Employee.prototype.employeeIDGenerator = function () {
@@ -76,11 +75,24 @@ function render(empFormLocalStrg) {  // the render passed arr arguement
 
     for (let i = 0; i < empFormLocalStrg.length; i++) {
         let div = document.createElement('div');
-        employeeSec.appendChild(div);
+        if (empFormLocalStrg[i].department === "Administration") {
+
+            employeeSec.appendChild(div);
+        }
+        else if (empFormLocalStrg[i].department === "Marketing") {
+            market.appendChild(div);
+
+        } else if (empFormLocalStrg[i].department === "Development") {
+            develop.appendChild(div);
+
+        } else
+            fin.appendChild(div);
 
         let img = document.createElement('img');
         div.appendChild(img);
         img.setAttribute('src', empFormLocalStrg[i].imageURL);
+        img.setAttribute('width', "200px")
+        img.setAttribute('height', "200px")
         img.setAttribute('alt', empFormLocalStrg[i].fullName);
 
 
@@ -105,12 +117,10 @@ function render(empFormLocalStrg) {  // the render passed arr arguement
         p3.textContent = empFormLocalStrg[i].Salary;
 
 
-
-
-
-
     }
 }
+
+// ********************* Read the json file and converted to array ****************************/
 
 function readFromLocalStrg() {
     let jsonStr = localStorage.getItem('admin');
@@ -124,6 +134,7 @@ function readFromLocalStrg() {
 
 }
 
+// ********************* Check the array is empty or Not ***************************************/
 
 function checkLocalAndPush() {
     if (allEmployees.length == 0) {
@@ -135,35 +146,50 @@ function checkLocalAndPush() {
 
 }
 
+// ********************* Create Object from  ***************************************************/
+
 function handelSubmit(event) {
     event.preventDefault();
     let name = event.target.name.value;
     let department = event.target.department.value;
     let Level = event.target.Level.value;
+    let imgURL = event.target.imgUrl.value || "../assets/maleImg.png";
+    // let totalSal = [0, 0, 0, 0, 0]; // 0->adm  1->markt  2-> dev  3->fina 4->total
 
 
-
-    let newEmployee = new Employee(name, department, Level);
+    let newEmployee = new Employee(name, department, Level, imgURL);
     newEmployee.employeeIDGenerator();
     newEmployee.calculateSalary(Level);
 
     if (department === "Administration") {
-        adm++;
+        depCount[0]++;
+        totalSal[0] = totalSal[0] + newEmployee.Salary;
 
     }
     else if (department === "Marketing") {
-        markt++;
+        depCount[1]++;
+        totalSal[1] = totalSal[1] + newEmployee.Salary;
 
     } else if (department === "Development") {
-        dev++;
+        depCount[2]++;
+        totalSal[2] = totalSal[2] + newEmployee.Salary;
 
     } else {
-        fina++;
+        depCount[3]++;
+        totalSal[3] = totalSal[3] + newEmployee.Salary;
     }
 
-    let countObj = { admCount: adm, devCount: dev, marktCount: markt, finCount: fina };
+    newEmployee.totalSal[4] = totalSal[0] + totalSal[1] + totalSal[2] + totalSal[3];
+
+    for (let i = 0; i < depCount.length; i++) {
+        newEmployee.depCount[i] = depCount[i];
+        newEmployee.totalSal[i] = totalSal[i] / newEmployee.depCount[i];
+        newEmployee.avg[i] = newEmployee.totalSal[4] / newEmployee.depCount[i];
+    }
+
+    newEmployee.Count = count;
+    newEmployee.imageURL = imgURL;
     allEmployees.push(newEmployee);
-    allEmployees.push(countObj);
 
     let jsonStr = toJSON();
     saveToLocalStrg(jsonStr);
@@ -178,9 +204,10 @@ function toJSON() {
     return jsonString;
 }
 
+// ********************* saved the json file to local Storage ****************************
+
 function saveToLocalStrg(jsonStr) {
     localStorage.setItem('admin', jsonStr);
-
 
 }
 

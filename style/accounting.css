@@ -12,6 +12,8 @@
 
 
 }
+
+
 .header-sec{
  margin-bottom: 5px;
 
@@ -52,11 +54,27 @@ header .header-nav a {
 
 }
 
+input{
+color: black;
+position: fixed;
+left: 40%
+}
+
 .background{
  margin-top: 10px;
 
 
 }
+
+
+#userInfo{
+  font-size:50px;
+ position: fixed;
+  left: 45%;
+  
+  background-color: rgba(0, 0, 0, 0.822);
+}
+
 
 .empInfo{
 
@@ -87,13 +105,26 @@ body{
 }
 
 table {
-  border: 5px solid black;
+  border:4px solid black;
   background-color:rgba(0, 0, 0, 0.842) ;
-  text-align: center;
+  text-align: left;
   position: relative;
+  font-family: sans-serif;
+  font-weight: 70;
   left: 20%;
   width: 65%;
   
+}
+
+#num{
+
+width: 100%;
+text-align: center;
+display:inline;
+}
+
+tr {
+  text-align: center;
 }
 
 .title{
@@ -109,6 +140,7 @@ footer {
   color: white;
   width: 100%;
   height: 15%;
+  position: fixed;
   bottom: 0%;
 } 
 
@@ -123,6 +155,15 @@ footer {
  
   
   }
+
+  .thead{
+    background-color: rgba(245, 245, 220, 0.356);
+  }
+
+  #tfoot{
+    background-color: #63000077;
+  }
+
   .empCard{
     background-color: #630000;
     width: 50%;

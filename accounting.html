@@ -5,47 +5,75 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style/index.css">
-    <title>Accounting PAge</title>
-
+    <link rel="stylesheet" href="./style/accounting.css">
+    <title>Document</title>
 </head>
 
 <body>
-    <header class="header-sec">
-
+    <header>
         <nav class="header-nav">
-            <a href="./index.html">Home</a>
+            <a href="index.html">Home</a>
             <a href="#">Account Page</a>
         </nav>
+
     </header>
+    <br />
+    <main>
+        <p id="userInfo">Statistics</p><br><br>
+        <form id="form">
 
-    <p id="userInfo"></p>
-    <form id="form">
+            <input class="sub" type="submit" value="Show Statistics about Employees">
+        </form>
+        <br><br><br>
+        <table>
 
-        <input type="submit" value="show" style="color: black; position:absolute; left: 40%; width: 20%;">
-    </form>
-    <br><br>
-    <hr>
+            <thead class="thead">
+                <td>Department
+                </td>
+                <td>Number of Employees</td>
+                <td>Total Salary</td>
+                <td>Average Salary</td>
 
-    <table id="addedNames" class="addedNames">
-        <thead id="thead" name=thead>
+            </thead>
 
-        </thead>
+            <tbody>
+                <tr>
+                    <td id="dep">Departments</td>
+                    <td id="num"></td>
+                    <td id="total"></td>/
+                    <td id="avg"></td>
+                </tr>
+            </tbody>
 
-    </table>
-    <script src="./js/accounting.js"></script>
+            <tfoot id="tfoot">
+                <tr>
+                    <td>Total</td>
+                    <td id="totNum"></td>
+                    <td id="totSal"></td>/
+                    <td id="totAvg"></td>
+
+                </tr>
+            </tfoot>
+
+        </table>
+        <script src="./js/accounting.js"></script>
+
+        <footer>
+
+            Follow Us
+            <br>
+
+            <div>
+                <a href="https://m.facebook.com/Renad.jkh?_rdc=1&_rdr">Facebook</a>
+                <a href="https://www.instagram.com/renad.jamil/">Instagram</a>
+            </div>
+            <p class="copyR"> &copy; All rights reserved.</p>
+
+        </footer>
+
+    </main>
+
+
 </body>
-<footer style="position: fixed;">
-
-    Follow Us
-    <br>
-
-    <div>
-        <a href="https://m.facebook.com/Renad.jkh?_rdc=1&_rdr">Facebook</a>
-        <a href="https://www.instagram.com/renad.jamil/">Instagram</a>
-    </div>
-    <p class="copyR"> &copy; All rights reserved.</p>
-
-</footer>
 
 </html>

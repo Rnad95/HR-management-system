@@ -1,98 +1,100 @@
 'use strict';
 
 //you calculated the no. of employee in app.js file in handle submit
-// show the table in the page instead of "false word"
+// show the table in the page instead of "false word
 
-
-
-let form = document.getElementById('form');
-let div = document.getElementById('addedNames');
+let td = document.getElementById('num');
+let dep = document.getElementById('dep');
+let tot = document.getElementById('total');
+let avg = document.getElementById('avg');
+let totEmp = document.getElementById('totNum');
+let totSal = document.getElementById('totSal');
+let totAvg = document.getElementById('totAvg');
 
 let emp = [];
 
 
 checkLocalAndPush();
-
 function handleSubmit(event) {
 
     event.preventDefault();
-    render(readFromLocalS());
+    let arr = render(readFromLocalS());
 
 }
+
 
 function toJSON() {
     let jsonArray = JSON.stringify(users);
     return jsonArray;
 }
 
+
 function saveToLocalS(jsonArray) {
-    localStorage.setItem('allEmps', jsonArray)
+    localStorage.setItem('admin', jsonArray)
 
 }
 
+//convert json file to a normal array
 function readFromLocalS() {
-    let jsonArr = localStorage.getItem('allEmps');
+    let jsonArr = localStorage.getItem('admin');
     let arr = JSON.parse(jsonArr);
     if (arr !== null) {
         return arr;
     } else {
         return [];
     }
+
+    render(arr);
+    // , totalSalaryOfEachDepartment(arr), avgSalary(arr)
 }
 
 function render(arr) {
-    div.innerHTML = '';
+    td.innerHTML = '';
+    dep.innerHTML = '';
+    tot.innerHTML = '';
+    avg.innerHTML = '';
+    totEmp.innerHTML = '';
+    totSal.innerHTML = '';
+    totAvg.innerHTML = '';
 
-    let p0 = document.createElement('p');
-    div.appendChild(p0);
+    let toTotSal = 0;
+    let toAvgSal = 0;
+    let depart = ["Administration", "Marketing", "Development", "Finance"]
+    for (let i = 0; i < depart.length; i++) {
+        let dep1 = document.createElement('div');
+        let num = document.createElement('div');
+        let tot1 = document.createElement('div');
+        let avg1 = document.createElement('div');
 
 
-    let p = document.getElementById('addedNames');
-    let arr1 = readFromLocalS();
-    p.textContent = arr1.includes("admCount");
+        dep.appendChild(dep1);
+        td.appendChild(num);
+        tot.appendChild(tot1);
+        avg.appendChild(avg1);
 
-    let sum = summationOfEachDepartment(readFromLocalS());
-    let avg = avgSalary(readFromLocalS, sum);
-    let totSalary = sum[0];
+
+        dep1.textContent = depart[i];
+        num.textContent = arr[arr.length - 1].depCount[i]
+        tot1.textContent = arr[arr.length - 1].totalSal[i];
+        avg1.textContent = Math.ceil(arr[arr.length - 1].avg[i]);
+        toTotSal += arr[arr.length - 1].totalSal[i];
+        toAvgSal += Math.ceil(arr[arr.length - 1].avg[i]);
+
+    };
+    let totEmp1 = document.createElement('div');
+    let totSal1 = document.createElement('div');
+    let totAvg1 = document.createElement('div');
+    totEmp.appendChild(totEmp1);
+    totSal.appendChild(totSal1);
+    totAvg.appendChild(totAvg1);
+    totEmp1.textContent = arr.length;
+    totSal1.textContent = toTotSal;
+    totAvg.textContent = toAvgSal;
 
 }
 
 
-function avgSalary(empFormLocalStrg, sum) {
-    let arr = [sum[0]];
 
-    for (let i = 1; i < sum.length; i++) {
-        arr.push(sum[0] / sum[i]);
-
-    }
-    return arr;
-}
-
-
-function summationOfEachDepartment(empFormLocalStrg) {
-    let totalSalary = 0;
-
-    for (let x = 0; x < empFormLocalStrg.length; x++) {
-
-        if (department === "Administration") {
-            adm = adm + empFormLocalStrg[x].Salary;
-
-        }
-        else if (department === "Marketing") {
-            markt = markt + empFormLocalStrg[x].Salary;
-
-        } else if (department === "Development") {
-            dev = dev + empFormLocalStrg[x].Salary;
-
-        } else {
-            fina = fina + empFormLocalStrg[x].Salary;
-        }
-    }
-
-    totalSalary = fina + dev + markt + adm;
-
-    return [totalSalary, adm, markt, dev, fina];
-}
 
 function checkLocalAndPush() {
     if (emp.length == 0) {
@@ -103,9 +105,8 @@ function checkLocalAndPush() {
     }
 }
 
-render(readFromLocalS());
 
-
+// render(readFromLocalS());
 
 
 form.addEventListener('submit', handleSubmit)
