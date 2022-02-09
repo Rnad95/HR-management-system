@@ -15,6 +15,7 @@ let emp = [];
 
 
 checkLocalAndPush();
+
 function handleSubmit(event) {
 
     event.preventDefault();
@@ -22,19 +23,19 @@ function handleSubmit(event) {
 
 }
 
-
+// ****************************** Convert the array to json file *******************************************/
 function toJSON() {
     let jsonArray = JSON.stringify(users);
     return jsonArray;
 }
 
-
+// ****************************** Save the data in local storage *******************************************/
 function saveToLocalS(jsonArray) {
     localStorage.setItem('admin', jsonArray)
 
 }
 
-//convert json file to a normal array
+// ********************************** Convert the json file to array ***************************************/
 function readFromLocalS() {
     let jsonArr = localStorage.getItem('admin');
     let arr = JSON.parse(jsonArr);
@@ -48,6 +49,7 @@ function readFromLocalS() {
     // , totalSalaryOfEachDepartment(arr), avgSalary(arr)
 }
 
+// *********************************** Show the Data in a Table  *******************************************/
 function render(arr) {
     td.innerHTML = '';
     dep.innerHTML = '';
@@ -57,8 +59,8 @@ function render(arr) {
     totSal.innerHTML = '';
     totAvg.innerHTML = '';
 
-    let toTotSal = 0;
-    let toAvgSal = 0;
+    var toTotSal = 0;
+    var toAvgSal = 0;
     let depart = ["Administration", "Marketing", "Development", "Finance"]
     for (let i = 0; i < depart.length; i++) {
         let dep1 = document.createElement('div');
@@ -76,9 +78,9 @@ function render(arr) {
         dep1.textContent = depart[i];
         num.textContent = arr[arr.length - 1].depCount[i]
         tot1.textContent = arr[arr.length - 1].totalSal[i];
-        avg1.textContent = Math.ceil(arr[arr.length - 1].avg[i]);
-        toTotSal += arr[arr.length - 1].totalSal[i];
-        toAvgSal += Math.ceil(arr[arr.length - 1].avg[i]);
+        avg1.textContent = Math.floor(arr[arr.length - 1].avg[i]);
+        toTotSal += Math.floor(arr[arr.length - 1].totalSal[i]);
+        toAvgSal += Math.floor(arr[arr.length - 1].avg[i]);
 
     };
     let totEmp1 = document.createElement('div');
@@ -94,8 +96,7 @@ function render(arr) {
 }
 
 
-
-
+// ****************************** Check if the Local storage is empty **************************************/
 function checkLocalAndPush() {
     if (emp.length == 0) {
         let arr = readFromLocalS();

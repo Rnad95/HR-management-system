@@ -100,7 +100,9 @@ body{
 
   background-image: url(https://wallpapercave.com/wp/wp2733191.jpg);
   /* background-image: url(https://i.pinimg.com/originals/e3/4c/a1/e34ca164d20ffaa28e7829c9641991c5.jpg); */
-
+  background-attachment:fixed;
+    
+  overflow:scroll;
 
 }
 

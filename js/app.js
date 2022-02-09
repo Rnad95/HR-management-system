@@ -8,15 +8,17 @@ let allEmployees = [];
 checkLocalAndPush();
 
 var count = 0;
-let depCount = [0, 0, 0, 0];
-let totalSal = [0, 0, 0, 0]
+var depCount = [0, 0, 0, 0];
+var totalSal = [0, 0, 0, 0]
 
+
+// *********************************** Create an Employee Constructor ********************************************/
 function Employee(fullName, department, level, imageURL) {
     this.employeeID = 0;
     this.fullName = fullName;
     this.department = department;
     this.level = level;
-    this.imageURL = imageURL || "../assets/maleImg.png";
+    this.imageURL = imageURL || "./assets/maleImg.png";
     this.Salary = 0;
     this.depCount = [];
     this.Count = 0;
@@ -25,7 +27,7 @@ function Employee(fullName, department, level, imageURL) {
 
 }
 
-
+// ************************************ Generator Id Randomly  *************************************************/
 Employee.prototype.employeeIDGenerator = function () {
     // let employee_id = Math.floor(Math.random() * (9999));
     count = count + 1;
@@ -34,7 +36,7 @@ Employee.prototype.employeeIDGenerator = function () {
 
 }
 
-
+// ****************************** Make the Digit Unique Starting from zero ************************************/
 function fourDigitId(empID) {
     empID = empID.toString();
     while (empID.length < 4) {
@@ -44,7 +46,7 @@ function fourDigitId(empID) {
 }
 
 
-
+// ****************************** Calculate Salary Using Random Methods ***************************************/
 Employee.prototype.calculateSalary = function (Level) {
     let Salary = Math.floor((Math.random() * 500) + 1);    //random number between 1 and 500 
 
@@ -66,6 +68,8 @@ Employee.prototype.calculateSalary = function (Level) {
 
 }
 
+
+// ****************************** Render the Employee Card *****************************************************/
 function render(empFormLocalStrg) {  // the render passed arr arguement
     employeeSec.innerHTML = '';
     market.innerHTML = '';
@@ -120,8 +124,7 @@ function render(empFormLocalStrg) {  // the render passed arr arguement
     }
 }
 
-// ********************* Read the json file and converted to array ****************************/
-
+// ****************************** Read the json file and converted to array ***********************************/
 function readFromLocalStrg() {
     let jsonStr = localStorage.getItem('admin');
     let arr = JSON.parse(jsonStr);
@@ -134,8 +137,7 @@ function readFromLocalStrg() {
 
 }
 
-// ********************* Check the array is empty or Not ***************************************/
-
+// ****************************** Check the array is empty or Not ********************************************/
 function checkLocalAndPush() {
     if (allEmployees.length == 0) {
         let arr = readFromLocalStrg();
@@ -146,14 +148,13 @@ function checkLocalAndPush() {
 
 }
 
-// ********************* Create Object from  ***************************************************/
-
+// ****************************** Create Object from Constructor  *******************************************/
 function handelSubmit(event) {
     event.preventDefault();
     let name = event.target.name.value;
     let department = event.target.department.value;
     let Level = event.target.Level.value;
-    let imgURL = event.target.imgUrl.value || "../assets/maleImg.png";
+    let imgURL = event.target.imgUrl.value || "./assets/maleImg.png";
     // let totalSal = [0, 0, 0, 0, 0]; // 0->adm  1->markt  2-> dev  3->fina 4->total
 
 
@@ -199,13 +200,14 @@ function handelSubmit(event) {
 }
 
 
+// ****************************** Convert Data from Object to JSON ******************************************/
 function toJSON() {
     let jsonString = JSON.stringify(allEmployees);
     return jsonString;
 }
 
-// ********************* saved the json file to local Storage ****************************
 
+// ****************************** Saved the json file to local Storage **************************************/
 function saveToLocalStrg(jsonStr) {
     localStorage.setItem('admin', jsonStr);
 
