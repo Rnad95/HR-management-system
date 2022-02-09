@@ -16,7 +16,7 @@ function Employee(fullName, department, level, imageURL) {
     this.fullName = fullName;
     this.department = department;
     this.level = level;
-    this.imageURL = imageURL || "../assets/maleImg.png";
+    this.imageURL = imageURL;
     this.Salary = 0;
     this.depCount = [];
     this.Count = 0;
