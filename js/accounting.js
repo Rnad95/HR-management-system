@@ -3,11 +3,14 @@
 //you calculated the no. of employee in app.js file in handle submit
 // show the table in the page instead of "false word
 
-let form = document.getElementById('form');
-let div = document.getElementById('addedNames');
-const thead = document.getElementById('thead');
-const tfoot = document.getElementById('tfoot');
-let tr = document.getElementById('tr1')
+let td = document.getElementById('num');
+let dep = document.getElementById('dep');
+let tot = document.getElementById('total');
+let avg = document.getElementById('avg');
+let totEmp = document.getElementById('totNum');
+let totSal = document.getElementById('totSal');
+let totAvg = document.getElementById('totAvg');
+
 let emp = [];
 
 
@@ -46,66 +49,51 @@ function readFromLocalS() {
 }
 
 function render(arr) {
-    div.innerHTML = '';
-    thead.innerHTML = '';
-    tfoot.innerHTML = '';
-    tr.innerHTML = '';
+    td.innerHTML = '';
+    dep.innerHTML = '';
+    tot.innerHTML = '';
+    avg.innerHTML = '';
+    totEmp.innerHTML = '';
+    totSal.innerHTML = '';
+    totAvg.innerHTML = '';
 
-    let tbody = document.createElement('tbody');
-
-    let tbody4 = document.createElement('tr');
-    thead.appendChild(tbody4);
-    tbody4.textContent = "Department";
-
-    let tbody5 = document.createElement('tr');
-    thead.appendChild(tbody5);
-    tbody5.textContent = "# of Employee";
-    let tbody6 = document.createElement('tr');
-    thead.appendChild(tbody6);
-    tbody6.textContent = "Total Salary";
-    let tbody7 = document.createElement('tr');
-    thead.appendChild(tbody7);
-    tbody7.textContent = "Average Salary"
+    let toTotSal = 0;
+    let toAvgSal = 0;
+    let depart = ["Administration", "Marketing", "Development", "Finance"]
+    for (let i = 0; i < depart.length; i++) {
+        let dep1 = document.createElement('div');
+        let num = document.createElement('div');
+        let tot1 = document.createElement('div');
+        let avg1 = document.createElement('div');
 
 
-    let tbody0 = document.createElement('tbody');
-    div.appendChild(tbody);
-    tbody.textContent = "Adminstration " + arr[arr.length - 1].Adm;
-
-    let tbody1 = document.createElement('tbody');
-    div.appendChild(tbody1);
-    tbody1.textContent = `Marketing  ${arr[arr.length - 1].Markt}`;
-
-    let tbody2 = document.createElement('tbody');
-    div.appendChild(tbody2);
-    tbody2.textContent = `Development${arr[arr.length - 1].Dev}`;
-
-    let tbody3 = document.createElement('tbody');
-    div.appendChild(tbody3);
-    tbody3.textContent = ` Finance ${arr[arr.length - 1].Fina}`;
+        dep.appendChild(dep1);
+        td.appendChild(num);
+        tot.appendChild(tot1);
+        avg.appendChild(avg1);
 
 
-    for (let i = 0; i < arr.length - 1; i++) { //subtraction because the last item is total
+        dep1.textContent = depart[i];
+        num.textContent = arr[arr.length - 1].depCount[i]
+        tot1.textContent = arr[arr.length - 1].totalSal[i];
+        avg1.textContent = Math.ceil(arr[arr.length - 1].avg[i]);
+        toTotSal += arr[arr.length - 1].totalSal[i];
+        toAvgSal += Math.ceil(arr[arr.length - 1].avg[i]);
 
-        let tbody = document.createElement('tfoot');
-        tfoot.appendChild(tbody);
-        tbody.textContent = arr[i].totalSal[i];
-
-    }
-
-    let tfoot0 = document.createElement('tfoot');
-    tfoot.appendChild(tfoot0);
-    tfoot0.textContent = `Total ${arr.length}`;
-
-    for (let i = 0; i < arr.length; i++) {
-        let tfoot1 = document.createElement('tfoot');
-        tfoot.appendChild(tfoot1);
-        tfoot1.textContent = arr[i].totalSal[i];
-
-    }
-
+    };
+    let totEmp1 = document.createElement('div');
+    let totSal1 = document.createElement('div');
+    let totAvg1 = document.createElement('div');
+    totEmp.appendChild(totEmp1);
+    totSal.appendChild(totSal1);
+    totAvg.appendChild(totAvg1);
+    totEmp1.textContent = arr.length;
+    totSal1.textContent = toTotSal;
+    totAvg.textContent = toAvgSal;
 
 }
+
+
 
 
 function checkLocalAndPush() {
@@ -118,7 +106,7 @@ function checkLocalAndPush() {
 }
 
 
-//render(readFromLocalS());
+// render(readFromLocalS());
 
 
 form.addEventListener('submit', handleSubmit)

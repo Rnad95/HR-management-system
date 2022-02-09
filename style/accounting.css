@@ -113,17 +113,18 @@ table {
   font-weight: 70;
   left: 20%;
   width: 65%;
-
-
   
 }
 
-#thead{
+#num{
 
-background-color: #630000ef;
 width: 100%;
 text-align: center;
 display:inline;
+}
+
+tr {
+  text-align: center;
 }
 
 .title{
@@ -154,6 +155,15 @@ footer {
  
   
   }
+
+  .thead{
+    background-color: rgba(245, 245, 220, 0.356);
+  }
+
+  #tfoot{
+    background-color: #63000077;
+  }
+
   .empCard{
     background-color: #630000;
     width: 50%;

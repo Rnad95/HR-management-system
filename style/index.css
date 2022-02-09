@@ -97,6 +97,7 @@ footer {
     height: 15%;
     bottom: 0;
   } 
+  
   h3::first-letter{
     font-size:50px;
     font-family:The Nautigal; 
@@ -126,22 +127,24 @@ form{
 font-size: 15px;
   }
 
+  
  
 
   div{
     background-color: rgba(36, 0, 0, 0.767);
     flex-wrap: nowrap;
     margin: 20px;
-    padding: 35px;;
+    padding: 35px;
+
 
   }
   .sec{
-    /* background-color: rgba(36, 0, 0, 0.767);
-width: 100%;*/
+    /* background-color: rgba(36, 0, 0, 0.767); */
+width: 100%;
   text-align: center; 
   position: relative;
   display: flex;
-
+  
   
   }
 
@@ -149,4 +152,5 @@ width: 100%;*/
     background-color:  rgba(24, 23, 23, 0.931);
  position: absolute;
     width: 100%;
+    display: flex;
   }
